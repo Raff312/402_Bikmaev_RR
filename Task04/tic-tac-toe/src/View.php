@@ -24,6 +24,13 @@ function showGameBoard($board)
     line("-------------------------------------------");
 }
 
+function showGamesInfoList($list)
+{
+    foreach ($list as $value) {
+        line("\nID: $value->id\nBoard size: $value->size\nDate: $value->date\nPlayer name: $value->name\nPlayer markup: $value->playerMarkup\nWinner markup: $value->winnerMarkup");
+    }
+}
+
 function showMessage($msg)
 {
     line($msg);

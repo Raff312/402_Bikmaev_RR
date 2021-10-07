@@ -3,7 +3,6 @@
 namespace raff312\ticTacToe\Model;
 
 use Exception as Exception;
-use LogicException as LogicException;
 
 const DEFAULT_DIMENSION = 3;
 const DEFAULT_MARKUP = " ";

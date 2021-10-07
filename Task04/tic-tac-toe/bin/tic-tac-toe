@@ -1,7 +1,7 @@
 <?php
 
-    $autoloadPathForGithub = __DIR__ . '/../vendor/autoload.php';
-    $autoloadPathForPackagist = __DIR__ . '/../../../autoload.php';
+$autoloadPathForGithub = __DIR__ . '/../vendor/autoload.php';
+$autoloadPathForPackagist = __DIR__ . '/../../../autoload.php';
 
 if (file_exists($autoloadPathForGithub)) {
     require_once($autoloadPathForGithub);
@@ -9,21 +9,6 @@ if (file_exists($autoloadPathForGithub)) {
     require_once($autoloadPathForPackagist);
 }
 
-    use function raff312\ticTacToe\Controller\startGame;
-    use function raff312\ticTacToe\View\showMessage;
+use function raff312\ticTacToe\Controller\startGame;
 
-    if (count($argv) > 1) {
-        if ($argv[1] === "--new" || $argv[1] === "-n") {
-            startGame();
-        } else if ($argv[1] === "--list" || $argv[1] === "-l") {
-            showMessage("We can't use a db yet!");
-        } else if ($argv[1] === "--replay" || $argv[1] === "-r") {
-            showMessage("We can't use a db yet!");
-        } else if ($argv[1] === "--help" || $argv[1] === "-h") {
-
-        } else {
-            showMessage("Unknown argument!");
-        }
-    } else {
-        startGame();
-    }
+startGame($argv);
