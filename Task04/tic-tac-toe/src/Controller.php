@@ -114,8 +114,10 @@ function processUserTurn($board, $markup, &$stopGame)
     do {
         try {
             $coords = getCoords($board);
-            $board->setMarkupOnBoard($coords[0], $coords[1], $markup);
-            if ($board->determineWinner($coords[0], $coords[1]) !== "") {
+            $coord1 = $coords[0] - 1;
+            $coord2 = $coords[1] - 1;
+            $board->setMarkupOnBoard($coord1, $coord2, $markup);
+            if ($board->determineWinner($coord1, $coord2) !== "") {
                 $stopGame = true;
             }
 
