@@ -2,6 +2,7 @@
 
 namespace raff312\ticTacToe\Repositories;
 
+use Exception as Exception;
 use SQLite3;
 use raff312\ticTacToe\Model\Board as Board;
 use stdClass;
@@ -12,7 +13,12 @@ class GamesRepository
 {
     private $db;
 
-    public function __construct() {
+    public function __construct()
+    {
+        if (!is_dir("../data")) {
+            mkdir("../data");
+        }
+
         $this->db = new SQLite3(DB_PATH);
         $this->createTable();
     }
@@ -25,7 +31,9 @@ class GamesRepository
             gameDate DATETIME,
             playerName TEXT,
             playerMarkup TEXT,
-            winnerMarkup TEXT
+            winnerMarkup TEXT,
+            xCoords TEXT,
+            oCoords TEXT
         )";
         $this->db->exec($gamesInfoTable);
     }
@@ -35,7 +43,7 @@ class GamesRepository
         $this->db->close();
     }
 
-    public function add(Board $board, $winnerMarkup)
+    public function add(Board $board, $winnerMarkup, $xCoords, $oCoords)
     {
         $size = $board->getDimension();
         date_default_timezone_set("Europe/Moscow");
@@ -43,8 +51,23 @@ class GamesRepository
         $playerName = getenv("username");
         $playerMarkup = $board->getUserMarkup();
 
-        $this->db->exec("INSERT INTO gamesInfo (sizeBoard, gameDate, playerName, playerMarkup, winnerMarkup) 
-            VALUES ('$size', '$date', '$playerName', '$playerMarkup', '$winnerMarkup')");
+        $this->db->exec("INSERT INTO gamesInfo (
+            sizeBoard, 
+            gameDate, 
+            playerName, 
+            playerMarkup, 
+            winnerMarkup, 
+            xCoords, 
+            oCoords
+        ) VALUES (
+            '$size', 
+            '$date', 
+            '$playerName', 
+            '$playerMarkup', 
+            '$winnerMarkup', 
+            '$xCoords', 
+            '$oCoords'
+        )");
     }
 
     public function getAll()
@@ -60,9 +83,41 @@ class GamesRepository
             $info->name = $row[3];
             $info->playerMarkup = $row[4];
             $info->winnerMarkup = $row[5];
+            $info->xCoords = $row[6];
+            $info->oCoords = $row[7];
             array_push($result, $info);
         }
 
         return $result;
+    }
+
+    public function getById($id)
+    {
+        if (!$this->idExists($id)) {
+            throw new Exception("This id doesn't exist");
+        }
+
+        $result = new stdClass();
+
+        $query = "SELECT * FROM gamesInfo WHERE id='$id'";
+        $query = $this->db->query($query);
+        while ($row = $query->fetchArray()) {
+            $result->id = $row[0];
+            $result->size = $row[1];
+            $result->date = $row[2];
+            $result->name = $row[3];
+            $result->playerMarkup = $row[4];
+            $result->winnerMarkup = $row[5];
+            $result->xCoords = $row[6];
+            $result->oCoords = $row[7];
+        }
+
+        return $result;
+    }
+
+    private function idExists($id)
+    {
+        $query = "SELECT EXISTS(SELECT 1 FROM gamesInfo WHERE id='$id')";
+        return $this->db->querySingle($query) == 1;
     }
 }

@@ -2,9 +2,9 @@
 
 namespace raff312\ticTacToe\View;
 
-    use function cli\prompt;
-    use function cli\line;
-    use function cli\out;
+use function cli\prompt;
+use function cli\line;
+use function cli\out;
 
 function showGameBoard($board)
 {
@@ -27,7 +27,26 @@ function showGameBoard($board)
 function showGamesInfoList($list)
 {
     foreach ($list as $value) {
-        line("\nID: $value->id\nBoard size: $value->size\nDate: $value->date\nPlayer name: $value->name\nPlayer markup: $value->playerMarkup\nWinner markup: $value->winnerMarkup");
+        showMessage("ID: $value->id");
+        showMessage("Board size: $value->size");
+        showMessage("Date: $value->date");
+        showMessage("Player name: $value->name");
+        showMessage("Player markup: $value->playerMarkup");
+        showMessage("Winner markup: $value->winnerMarkup");
+    }
+}
+
+function showGameReplay($xCoords, $oCoords)
+{
+    $xCoordsArr = explode(",", $xCoords);
+    $oCoordsArr = explode(",", $oCoords);
+
+    for ($i = 0; $i < max(count($xCoordsArr), count($oCoordsArr)); $i++) {
+        $xCoordVal = array_key_exists($i, $xCoordsArr) ? $xCoordsArr[$i] : "";
+        $oCoordVal = array_key_exists($i, $oCoordsArr) ? $oCoordsArr[$i] : "";
+
+        $step = $i + 1;
+        line("\nStep #: $step\n'X' coord: $xCoordVal\n'O' coord: $oCoordVal");
     }
 }
 
