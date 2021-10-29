@@ -16,8 +16,8 @@ class GamesRepository
         if (!is_dir("../data")) {
             mkdir("../data");
         }
-        
-        R::setup("sqlite:".DB_PATH);
+
+        R::setup("sqlite:" . DB_PATH);
         $this->createTable();
     }
 
