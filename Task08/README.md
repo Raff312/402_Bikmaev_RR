@@ -39,3 +39,4 @@
 4. Выполнить в консоли команду `composer update`;
 5. Выполнить в консоли команду `composer dump-autoload`;
 6. Выполнить в консоли команду `php -S localhost:3000 -t public`;
+7. В браузере открыть <http://localhost:3000> или <http://localhost:3000/index.html>.
