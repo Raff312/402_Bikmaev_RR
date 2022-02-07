@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App;
 
@@ -8,7 +10,6 @@ class Fraction
 {
     private int $numerator;
     private int $denominator;
-
     private function __construct(int $numerator, int $denominator)
     {
         if (!is_int($numerator) || !is_int($denominator)) {
@@ -22,7 +23,6 @@ class Fraction
         $sign = $this->sign($numerator * $denominator);
         $this->numerator = $sign * abs($numerator);
         $this->denominator = abs($denominator);
-
         $this->normalize();
     }
 

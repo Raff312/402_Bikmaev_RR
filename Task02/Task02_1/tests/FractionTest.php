@@ -1,4 +1,8 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
+namespace App;
 
 use PHPUnit\Framework\TestCase;
 use Exception;
@@ -6,7 +10,7 @@ use App\Fraction;
 
 final class FractionTest extends TestCase
 {
-    public function testCreateWithAllPositiveArgs(): void 
+    public function testCreateWithAllPositiveArgs(): void
     {
         // act
         $frac1 = Fraction::create(34, 116);
@@ -17,7 +21,7 @@ final class FractionTest extends TestCase
         $this->assertEquals("6'19/54", $frac2->__toString());
     }
 
-    public function testCreateWithOnePositiveArg(): void 
+    public function testCreateWithOnePositiveArg(): void
     {
         // act
         $frac1 = Fraction::create(34, -116);
@@ -28,7 +32,7 @@ final class FractionTest extends TestCase
         $this->assertEquals("-17/58", $frac2->__toString());
     }
 
-    public function testCreateWithAllNegativeArgs(): void 
+    public function testCreateWithAllNegativeArgs(): void
     {
         // act
         $frac = Fraction::create(-34, -116);
@@ -37,7 +41,7 @@ final class FractionTest extends TestCase
         $this->assertEquals("17/58", $frac->__toString());
     }
 
-    public function testCreateWithDivisibleArguments(): void 
+    public function testCreateWithDivisibleArguments(): void
     {
         // act
         $frac1 = Fraction::create(10, 5);
@@ -48,7 +52,7 @@ final class FractionTest extends TestCase
         $this->assertEquals("1", $frac2->__toString());
     }
 
-    public function testCreateWithZeroNumerator(): void 
+    public function testCreateWithZeroNumerator(): void
     {
         // act
         $frac = Fraction::create(0, -116);
@@ -67,7 +71,7 @@ final class FractionTest extends TestCase
         Fraction::create(343, 0);
     }
 
-    public function testGetNumerator(): void 
+    public function testGetNumerator(): void
     {
         // arrange
         $frac = Fraction::create(595, 721);
@@ -78,8 +82,8 @@ final class FractionTest extends TestCase
         // assert
         $this->assertSame(85, $numer);
     }
-    
-    public function testGetDenominator(): void 
+
+    public function testGetDenominator(): void
     {
         // arrange
         $frac = Fraction::create(595, 721);
@@ -91,7 +95,7 @@ final class FractionTest extends TestCase
         $this->assertSame(103, $denom);
     }
 
-    public function testAdd(): void 
+    public function testAdd(): void
     {
         // arrange
         $frac1 = Fraction::create(34, 116);
@@ -105,7 +109,7 @@ final class FractionTest extends TestCase
         $this->assertEquals($expectedResult, $actualResult);
     }
 
-    public function testSub(): void 
+    public function testSub(): void
     {
         // arrange
         $frac1 = Fraction::create(34, 116);
