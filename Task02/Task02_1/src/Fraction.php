@@ -10,6 +10,7 @@ class Fraction
 {
     private int $numerator;
     private int $denominator;
+
     private function __construct(int $numerator, int $denominator)
     {
         if (!is_int($numerator) || !is_int($denominator)) {
@@ -109,6 +110,6 @@ class Fraction
             return strval($wholePart);
         }
 
-        return $wholePart . "'" . $numerator . "/" . $this -> denominator;
+        return $wholePart . "'" . $numerator . "/" . $this->denominator;
     }
 }

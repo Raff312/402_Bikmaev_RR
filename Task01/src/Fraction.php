@@ -111,6 +111,6 @@ class Fraction
             return $wholePart;
         }
 
-        return $wholePart . "'" . $numerator . "/" . $this -> denominator;
+        return $wholePart . "'" . $numerator . "/" . $this->denominator;
     }
 }
