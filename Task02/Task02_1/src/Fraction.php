@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 use Exception;
@@ -22,7 +24,6 @@ class Fraction
         $sign = $this->sign($numerator * $denominator);
         $this->numerator = $sign * abs($numerator);
         $this->denominator = abs($denominator);
-
         $this->normalize();
     }
 
@@ -99,8 +100,6 @@ class Fraction
     {
         if ($this->numerator === 0) {
             return "0";
-        } elseif ($this->numerator === $this->denominator) {
-            return "1";
         } elseif (abs($this->numerator) < $this->denominator) {
             return $this->numerator . "/" . $this->denominator;
         }
@@ -108,7 +107,7 @@ class Fraction
         $wholePart = intval($this->numerator / $this->denominator);
         $numerator = abs($this->numerator % $this->denominator);
         if ($numerator === 0) {
-            return $wholePart;
+            return strval($wholePart);
         }
 
         return $wholePart . "'" . $numerator . "/" . $this->denominator;
