@@ -1,0 +1,19 @@
+{
+    "name": "raff/task04_3",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Rafik",
+            "email": "bikmaevrafik@gmail.com"
+        }
+    ],
+    "description": "",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
