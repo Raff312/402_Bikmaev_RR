@@ -159,7 +159,7 @@ final class StudentsListTest extends TestCase
         $this->assertSame(4, $currentStudent->getCourse());
         $this->assertSame(402, $currentStudent->getGroup());
     }
-    
+
     public function testKey(): void
     {
         // arrange
@@ -181,7 +181,7 @@ final class StudentsListTest extends TestCase
         // assert
         $this->assertSame(1, $currentStudentKey);
     }
-    
+
     public function testNext(): void
     {
         // arrange
@@ -209,7 +209,7 @@ final class StudentsListTest extends TestCase
         $this->assertSame(3, $currentStudent1->getId());
         $this->assertSame(false, $currentStudent2);
     }
-    
+
     public function testRewind(): void
     {
         // arrange
@@ -234,7 +234,7 @@ final class StudentsListTest extends TestCase
         // assert
         $this->assertSame(1, $currentStudent->getId());
     }
-    
+
     public function testValid(): void
     {
         // arrange
