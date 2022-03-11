@@ -13,7 +13,7 @@
             "App\\": "src/"
         },
         "files": [
-            "src/index.php"
+            "src/Index.php"
         ]
     },
     "require-dev": {
