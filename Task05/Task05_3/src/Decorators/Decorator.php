@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Decorators;
 
-use App\Room;
+use App\RoomInterface;
 
-abstract class Decorator extends Room
+abstract class Decorator implements RoomInterface
 {
-    private Room $room;
+    private RoomInterface $room;
 
-    public function __construct(Room $room)
+    public function __construct(RoomInterface $room)
     {
         $this->room = $room;
     }

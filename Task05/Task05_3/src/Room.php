@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
-abstract class Room
+abstract class Room implements RoomInterface
 {
     protected int $price;
     protected string $description;

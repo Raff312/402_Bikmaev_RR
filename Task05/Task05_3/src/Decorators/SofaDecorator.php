@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Decorators;
 
-use App\Room;
+use App\RoomInterface;
 
 class SofaDecorator extends Decorator
 {
-    public function __construct(Room $room)
+    public function __construct(RoomInterface $room)
     {
         parent::__construct($room);
     }
